@@ -11,7 +11,7 @@ Welcome to the Hangman Game! This is a fun and interactive web-based version of 
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [License](#license)
-- [Demo](#Screenshots and Demo)
+- [Screenshots and Demo](#Demo and Screeshots)
 
 ## Features
 
