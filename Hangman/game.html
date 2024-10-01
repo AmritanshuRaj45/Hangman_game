@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Hangman Game</title>
+</head>
+
+<body>
+    <a href="index.html" style="text-decoration: none;">
+        <div id="heading">
+            <div id="hangman">Hangman</div>
+            <div id="game">Game</div>
+        </div>
+    </a>
+    
+    
+
+    <div class="container flex">
+        <div class=left_side>
+        <div class=" gallows">
+            <div class="crossbarOne"></div>
+            <div class="floor"></div>
+            <div class="crossbar"></div>
+            <div class="post">
+                <div class="deadguy head"></div>
+                <div class="deadguy body">
+                    <div class="deadguy right-arm"></div>
+                    <div class="deadguy left-arm"></div>
+                    <div class="deadguy left-leg"></div>
+                    <div class="deadguy right-leg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="right_side">
+            
+            <!-- Start Game button -->
+           <div id="start_game_button" ><a id="eff"><span>Start Game</span><i></i></a></div>
+
+            <!-- Hint display -->
+            <div id="hint_display">Hint: </div>
+
+            <!-- Extra hint button -->
+            <button id="extra_hint_button">Get Extra Hint</button>
+            <button id="skip_button">Skip</button>
+
+            <!-- Extra hint display -->
+            <div id="extra_hint_display"></div>
+
+            <!-- Result display -->
+            <div id="result_display"></div>
+
+            <!-- Word display -->
+            <div id=bg_res><div id="word_display"></div></div><br>
+
+            <!-- Keyboard display -->
+            <div id="keybord">
+               
+            </div>
+            
+            <br>
+
+            <!-- New game button -->
+            <a id="eff"class="new_game" style="display: none; --color: red;"><span>New Game</span><i></i></a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
