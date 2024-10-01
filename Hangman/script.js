@@ -1,6 +1,104 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  
     let theWord, hint, extraHint;
     let extraHintUsed = false;
+    
+    const suggestWordButton = document.getElementById("suggest_word_button");
+    const sidebar = document.getElementById("sidebar");
+    const closeSidebarButton = document.getElementById("close_sidebar");
+    
+    // Toggle sidebar visibility on button click
+    suggestWordButton.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent default action
+        suggestWordButton.style.display="none";
+        sidebar.classList.toggle("visible"); // Toggle the 'visible' class to show/hide sidebar
+        sidebar.classList.remove("hidden"); // Ensure the sidebar is not hidden
+    });
+    
+    // Close sidebar when the close button is clicked
+    closeSidebarButton.addEventListener("click", () => {
+        
+        sidebar.classList.remove("visible"); // Hide sidebar
+        sidebar.classList.add("hidden"); // Optionally, add 'hidden' class back to hide it completely
+        suggestWordButton.style.display="flex";
+    });
+    
+    // Close sidebar when clicking outside of it
+    document.addEventListener("click", (event) => {
+        // Check if sidebar is visible and the click is outside of it and the suggest word button
+        if (sidebar.classList.contains("visible") && !sidebar.contains(event.target) && !suggestWordButton.contains(event.target)) {
+            sidebar.classList.remove("visible"); // Hide sidebar
+            sidebar.classList.add("hidden"); // Optionally, add 'hidden' class back to hide it completely
+            suggestWordButton.style.display="flex";
+        }
+    });
+    
+    // Prevent clicks inside the sidebar from closing it
+    sidebar.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevent event from bubbling up to the document
+    });
+
+    suggestWordButton.addEventListener('mouseenter', () => {
+        suggestWordButton.textContent = 'Suggest a new word ';
+    });
+    
+    suggestWordButton.addEventListener('mouseleave', () => {
+        suggestWordButton.textContent = '+';
+    });
+    
+    const suggestWordForm = document.getElementById("suggest_word_form");
+
+
+    // Event listener for form submission
+    suggestWordForm.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get values from the form
+        const word = document.getElementById("new_word").value;
+        const hint = document.getElementById("hint").value;
+        const extraHint = document.getElementById("extra_hint").value;
+        const submitButton = event.target.querySelector('button[type="submit"]');
+        submitButton.disabled = true; // Disable the submit button
+      
+        // Create an object to send to the server
+        const newWordData = {
+            word,
+            hint,
+            extraHint
+        };
+
+        try {
+            // Send data to the server using POST request
+            const response = await fetch('http://localhost:3000/api/words', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newWordData),
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log(result.message); // Handle success response
+                alert('Word suggested successfully!'); // Alert the user
+                suggestWordForm.reset(); // Reset the form
+                closeSidebarButton.click();
+            } else {
+                const error = await response.json();
+                console.error(error.message); // Handle error response
+                alert('Failed to suggest word: ' + error.message); // Alert the user
+            }
+        } catch (error) {
+            console.error('Error:', error); // Log any network errors
+            alert('An error occurred while suggesting the word.');
+        }finally {
+            submitButton.disabled = false; // Re-enable the button
+           
+        }
+        
+       
+
+    });
 
     // Fetch a random word from your API
     async function fetchRandomWord() {
