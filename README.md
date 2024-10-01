@@ -84,15 +84,15 @@ The Hangman game features a custom API that allows users to:
 This API enhances the gameplay experience by allowing users to contribute new words and hints to the game, making it more engaging and diverse.
 
 ## Screenshots and Demo
-
+   ### main interface ###
 
 https://github.com/user-attachments/assets/5d264050-fa0a-491d-a6a8-866b139f1f9f
 
-   *main interface*
+   
 
 https://github.com/user-attachments/assets/81ca2ba5-a060-485e-9793-04874d4efe01
 
-   *adding new words to database*
+   ### adding new words ###
 
 
 ## Contributing
