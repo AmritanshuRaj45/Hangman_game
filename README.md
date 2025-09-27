@@ -85,7 +85,8 @@ This API enhances the gameplay experience by allowing users to contribute new wo
 
 ## Screenshots and Demo
 ### Live demo
-[Click here to try it out]((https://hangman-game-main.vercel.app/))
+[Click here to try it out](https://hangman-game-main.vercel.app/)
+
    ### main interface ###
 
 https://github.com/user-attachments/assets/5d264050-fa0a-491d-a6a8-866b139f1f9f
